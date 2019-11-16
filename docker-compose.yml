@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  digdag:
+    build: .
+    container_name: digdag
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "65432:65432"
+    restart: always
+    volumes:
+      - ./workflow:/var/lib/digdag/workflow
+  nginx:
+    build: nginx/
+    container_name: nginx
+    ports:
+      - "80:80"
+    links:
+      - digdag:digdag
+    restart: always

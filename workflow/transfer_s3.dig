@@ -1,0 +1,6 @@
+timezone: Asia/Tokyo
+
++setup:
+  echo>: start ${session_time}
+
++file_tranfer_s3
